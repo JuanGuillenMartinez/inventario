@@ -16,7 +16,7 @@ use Yii;
  *
  * @property Cliente $cliente
  * @property DetallesVenta[] $detallesVentas
- * @property Empleado $empleado
+ * @property DatosEmpleado $empleado
  */
 class Venta extends \yii\db\ActiveRecord
 {
@@ -38,7 +38,7 @@ class Venta extends \yii\db\ActiveRecord
             [['id_cliente', 'id_empleado'], 'integer'],
             [['subtotal', 'descuento', 'total'], 'number'],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['id_cliente' => 'id_cliente']],
-            [['id_empleado'], 'exist', 'skipOnError' => true, 'targetClass' => Empleado::className(), 'targetAttribute' => ['id_empleado' => 'id_empleado']],
+            [['id_empleado'], 'exist', 'skipOnError' => true, 'targetClass' => DatosEmpleado::className(), 'targetAttribute' => ['id_empleado' => 'id_datos_empleado']],
         ];
     }
 
@@ -84,6 +84,6 @@ class Venta extends \yii\db\ActiveRecord
      */
     public function getEmpleado()
     {
-        return $this->hasOne(Empleado::className(), ['id_empleado' => 'id_empleado']);
+        return $this->hasOne(DatosEmpleado::className(), ['id_datos_empleado' => 'id_empleado']);
     }
 }

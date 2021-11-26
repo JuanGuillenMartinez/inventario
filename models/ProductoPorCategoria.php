@@ -32,8 +32,8 @@ class ProductoPorCategoria extends \yii\db\ActiveRecord
         return [
             [['id_producto', 'id_categoria'], 'required'],
             [['id_producto', 'id_categoria'], 'integer'],
-            [['id_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::className(), 'targetAttribute' => ['id_categoria' => 'id_categoria']],
             [['id_producto'], 'exist', 'skipOnError' => true, 'targetClass' => Producto::className(), 'targetAttribute' => ['id_producto' => 'id_producto']],
+            [['id_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::className(), 'targetAttribute' => ['id_categoria' => 'id_categoria']],
         ];
     }
 

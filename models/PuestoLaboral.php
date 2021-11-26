@@ -11,7 +11,7 @@ use Yii;
  * @property string $nombre_puesto Puesto
  * @property float $salario Salario
  *
- * @property Empleado[] $empleados
+ * @property DatosEmpleado[] $datosEmpleados
  */
 class PuestoLaboral extends \yii\db\ActiveRecord
 {
@@ -48,12 +48,12 @@ class PuestoLaboral extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Empleados]].
+     * Gets query for [[DatosEmpleados]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getEmpleados()
+    public function getDatosEmpleados()
     {
-        return $this->hasMany(Empleado::className(), ['id_puesto_laboral' => 'id_puesto_laboral']);
+        return $this->hasMany(DatosEmpleado::className(), ['id_puesto' => 'id_puesto_laboral']);
     }
 }

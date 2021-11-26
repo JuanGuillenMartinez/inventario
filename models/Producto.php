@@ -62,13 +62,11 @@ class Producto extends \yii\db\ActiveRecord
             'id_unidad_medida' => 'ID de presentación',
             'descripcion' => 'Descripción',
             'precio_unitario' => 'Precio',
-            'fecha_registro' => 'Registro',
-            'fecha_caducidad' => 'Caducidad',
+            'fecha_registro' => 'Fecha de registro',
+            'fecha_caducidad' => 'Fecha de caducidad',
             'codigo_qr' => 'Código QR',
             'codigo_barras' => 'Código de barras',
             'url_imagen' => 'Imagen',
-            'marcaNombre' => 'Marca',
-            'presentacion' => 'Presentacion'
         ];
     }
 
@@ -130,12 +128,5 @@ class Producto extends \yii\db\ActiveRecord
     public function getUnidadMedida()
     {
         return $this->hasOne(UnidadMedida::className(), ['id_unidad_medida' => 'id_unidad_medida']);
-    }
-
-    public function getMarcaNombre() {
-        return $this->marcaComercial->nombre;
-    }
-    public function getPresentacion() {
-        return $this->unidadMedida->medida;
     }
 }

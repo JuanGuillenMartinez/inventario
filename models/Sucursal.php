@@ -15,7 +15,7 @@ use Yii;
  * @property string $hora_apertura Apertura
  * @property string $hora_cierre Cierre
  *
- * @property Empleado[] $empleados
+ * @property DatosEmpleado[] $datosEmpleados
  * @property ProductosSucursal[] $productosSucursals
  * @property Tienda $tienda
  */
@@ -60,13 +60,13 @@ class Sucursal extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Empleados]].
+     * Gets query for [[DatosEmpleados]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getEmpleados()
+    public function getDatosEmpleados()
     {
-        return $this->hasMany(Empleado::className(), ['id_sucursal' => 'id_sucursal']);
+        return $this->hasMany(DatosEmpleado::className(), ['id_sucursal' => 'id_sucursal']);
     }
 
     /**
