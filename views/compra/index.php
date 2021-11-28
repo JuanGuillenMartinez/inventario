@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Compra', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Añadir Compra', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,8 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id_compra',
-            'id_proveedor',
-            'id_empleado',
+            //'id_proveedor',
+            'nombreProveedor',
+            //'id_empleado',
+            'nomEmpleado',
             'subtotal',
             'descuento',
             //'total',

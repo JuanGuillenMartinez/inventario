@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use app\models\Proveedor;
+use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -12,18 +14,40 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_proveedor')->textInput() ?>
+    <div class="row">
 
-    <?= $form->field($model, 'id_empleado')->textInput() ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'id_proveedor')->widget(Select2:: className(), [
+            'data' => Proveedor::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Seleccione un Proveedor...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+            ]) ?>
+        </div>
 
-    <?= $form->field($model, 'subtotal')->textInput() ?>
 
-    <?= $form->field($model, 'descuento')->textInput() ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'id_empleado')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'total')->textInput() ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'subtotal')->textInput() ?>
+        </div>
+
+        <div class="col-md-3">
+            <?= $form->field($model, 'descuento')->textInput() ?>
+        </div>
+
+        <div class="col-md-3">
+            <?= $form->field($model, 'total')->textInput() ?>
+        </div>
+
+    </div>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

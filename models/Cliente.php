@@ -62,4 +62,7 @@ class Cliente extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Venta::className(), ['id_cliente' => 'id_cliente']);
     }
+    public static function mapEstatus(){
+        return ['Activo' => 'Activo', 'Baja' => 'Baja'];
+    }
 }

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "proveedores".
@@ -53,5 +54,8 @@ class Proveedor extends \yii\db\ActiveRecord
     public function getCompras()
     {
         return $this->hasMany(Compra::className(), ['id_proveedor' => 'id_proveedor']);
+    }
+    public static function map(){
+        return ArrayHelper::map(Proveedor::find()->all(),'id_proveedor','nombre');
     }
 }
