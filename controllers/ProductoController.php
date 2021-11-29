@@ -18,17 +18,11 @@ class ProductoController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
 
     /**
@@ -71,7 +65,7 @@ class ProductoController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->fecha_registro = date('Y-m-d');
-                if($model->save()) {
+                if ($model->save()) {
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
             }
