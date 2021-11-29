@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "marcas_comerciales".
@@ -52,5 +53,9 @@ class MarcaComercial extends \yii\db\ActiveRecord
     public function getProductos()
     {
         return $this->hasMany(Producto::className(), ['id_marca_comercial' => 'id_marca_comercial']);
+    }
+
+    public function getMarcaMap() {
+        return ArrayHelper::map(MarcaComercial::find()->all(), 'id_marca_comercial', 'nombre');
     }
 }

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Producto */
 
-$this->title = $model->id_producto;
+$this->title = $model->descripcion;
 $this->params['breadcrumbs'][] = ['label' => 'Productos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id_producto' => $model->id_producto], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id_producto' => $model->id_producto], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id_producto], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->id_producto], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Desea eliminarlo?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,9 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id_producto',
-            'id_marca_comercial',
-            'id_unidad_medida',
             'descripcion',
+            // 'id_marca_comercial',
+            'marcaNombre',
+            // 'id_unidad_medida',
+            'unidadNombre',
             'precio_unitario',
             'fecha_registro',
             'fecha_caducidad',

@@ -52,10 +52,10 @@ class ProductoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id_producto)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id_producto),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -69,8 +69,11 @@ class ProductoController extends Controller
         $model = new Producto();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id_producto' => $model->id_producto]);
+            if ($model->load($this->request->post())) {
+                $model->fecha_registro = date('Y-m-d');
+                if($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +91,12 @@ class ProductoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id_producto)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id_producto);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id_producto' => $model->id_producto]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -108,9 +111,9 @@ class ProductoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id_producto)
+    public function actionDelete($id)
     {
-        $this->findModel($id_producto)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +125,7 @@ class ProductoController extends Controller
      * @return Producto the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id_producto)
+    protected function findModel($id)
     {
         if (($model = Producto::findOne($id)) !== null) {
             return $model;
