@@ -120,4 +120,12 @@ class DatosEmpleado extends \yii\db\ActiveRecord
         return $this->hasMany(Venta::className(), ['id_empleado' => 'id_datos_empleado']);
     }
 
+    public static function getCurrentEmpleado() {
+        return DatosEmpleado::find()->where(['id_user' => Yii::$app->user->identity->getId()])->one();
+    }
+
+    public function getIdEmpleado() {
+        return DatosEmpleado::getCurrentEmpleado()->id_datos_empleado;
+    }
+
 }

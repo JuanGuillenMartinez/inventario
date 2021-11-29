@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "tiendas".
@@ -58,6 +59,16 @@ class Tienda extends \yii\db\ActiveRecord
 
     public static function getCurrentTienda() {
         $empleado = DatosEmpleado::find()->where(['id_user' => Yii::$app->user->identity->getId()])->one();
-        return Tienda::find()->where(['id_tienda' => $empleado->sucursal->tienda->id_tienda])->one();
+        if(isset($empleado)) {
+            $tienda = Tienda::find()->where(['id_tienda' => $empleado->sucursal->tienda->id_tienda])->one();
+            return $tienda; 
+        }
+        return null;
     }
+
+    public static function getTiendaMap()
+    {
+        return ArrayHelper::map(Tienda::find()->all(), 'id_tienda', 'nombre_tienda');
+    }
+    
 }

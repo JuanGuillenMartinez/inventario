@@ -40,7 +40,8 @@ class ProductosSucursalSearch extends ProductosSucursal
      */
     public function search($params)
     {
-        $query = ProductosSucursal::find()->where(['id_sucursal' => Sucursal::getCurrentSucursal()->id_sucursal]);
+        $sucursal = Sucursal::getCurrentSucursal();
+        $query = (isset($sucursal)) ? ProductosSucursal::find()->where(['id_sucursal' => $sucursal->id_sucursal]) : ProductosSucursal::find();
 
         // add conditions that should always apply here
 

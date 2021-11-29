@@ -50,9 +50,10 @@ class Sucursal extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_sucursal' => 'ID',
-            'id_tienda' => 'ID de tienda',
-            'nombre_sucursal' => 'Nombre',
+            'id_tienda' => 'ID tienda',
+            'id_sucursal' => 'ID sucursal',
+            'tiendaNombre' => 'Tienda',
+            'nombre_sucursal' => 'Sucursal',
             'direccion' => 'Dirección',
             'telefono_contacto' => 'Teléfono',
             'hora_apertura' => 'Apertura',
@@ -92,11 +93,19 @@ class Sucursal extends \yii\db\ActiveRecord
 
     public static function getCurrentSucursal() {
         $empleado = DatosEmpleado::find()->where(['id_user' => Yii::$app->user->identity->getId()])->one();
-        return Sucursal::find()->where(['id_sucursal' => $empleado->sucursal->id_sucursal])->one();
+        if(isset($empleado)) {
+            $sucursal = Sucursal::find()->where(['id_sucursal' => $empleado->sucursal->id_sucursal])->one();
+            return $sucursal;
+        }
+        return null;
     }
 
     public function getInfoSucursal() {
         return $this->tienda->nombre_tienda . " - " . $this->nombre_sucursal;
+    }
+
+    public function getTiendaNombre() {
+        return $this->tienda->nombre_tienda;
     }
 
     public static function getSucursalMap()

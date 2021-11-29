@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\SucursalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Sucursals';
+$this->title = 'Sucursales';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sucursal-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Sucursal', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Registrar Sucursal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,13 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_sucursal',
-            'id_tienda',
+            // 'id_sucursal',
+            'tiendaNombre',
             'nombre_sucursal',
             'direccion',
             'telefono_contacto',
-            //'hora_apertura',
-            //'hora_cierre',
+            'hora_apertura',
+            'hora_cierre',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

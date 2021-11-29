@@ -26,13 +26,13 @@ use yii\bootstrap4\Html;
                 <h2 class="nombre-boton">Productos en sucursal</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="div-boton">
-                <a href="/reservacion">
+                <a href="/compra">
                     <?php echo Html::img('@web/img/icons/compras.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
                 </a>
                 <h2 class="nombre-boton">Compras</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="div-boton">
-                <a href="/reservacion">
+                <a href="/venta">
                     <?php echo Html::img('@web/img/icons/ventas.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
                 </a>
                 <h2 class="nombre-boton">Ventas</h2>

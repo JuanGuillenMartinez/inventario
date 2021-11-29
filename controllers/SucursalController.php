@@ -69,8 +69,12 @@ class SucursalController extends Controller
         $model = new Sucursal();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id_sucursal]);
+            if ($model->load($this->request->post())) {
+                $model->hora_apertura = date("H:i", strtotime($model->hora_apertura));
+                $model->hora_cierre = date("H:i", strtotime($model->hora_cierre));
+                if($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id_sucursal]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -92,8 +96,12 @@ class SucursalController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_sucursal]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->hora_apertura = date("H:i", strtotime($model->hora_apertura));
+                $model->hora_cierre = date("H:i", strtotime($model->hora_cierre));
+                if($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id_sucursal]);
+                }
         }
 
         return $this->render('update', [

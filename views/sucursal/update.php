@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Sucursal */
 
-$this->title = 'Update Sucursal: ' . $model->id_sucursal;
-$this->params['breadcrumbs'][] = ['label' => 'Sucursals', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_sucursal, 'url' => ['view', 'id_sucursal' => $model->id_sucursal]];
+$this->title = 'Actualizar Sucursal: ' . $model->nombre_sucursal;
+$this->params['breadcrumbs'][] = ['label' => 'Sucursales', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->id_sucursal, 'url' => ['view', 'id' => $model->id_sucursal]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="sucursal-update">
