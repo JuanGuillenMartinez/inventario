@@ -26,7 +26,7 @@ use yii\bootstrap4\Html;
                 <h2 class="nombre-boton">Productos en sucursal</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="div-boton">
-                <a href="/compra">
+                <a href="/detalles-compra">
                     <?php echo Html::img('@web/img/icons/compras.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
                 </a>
                 <h2 class="nombre-boton">Compras</h2>
@@ -38,16 +38,16 @@ use yii\bootstrap4\Html;
                 <h2 class="nombre-boton">Ventas</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="div-boton">
-                <a href="/reservacion">
+                <a href="/sucursal">
                     <?php echo Html::img('@web/img/icons/sucursal.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
                 </a>
                 <h2 class="nombre-boton">Sucursales</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="div-boton">
-                <a href="/reservacion">
+                <a href="/tienda">
                     <?php echo Html::img('@web/img/icons/tienda.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
                 </a>
-                <h2 class="nombre-boton">Tienda</h2>
+                <h2 class="nombre-boton">Tiendas</h2>
             </div>
         </div>
     </section>

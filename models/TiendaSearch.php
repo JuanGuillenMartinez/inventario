@@ -40,7 +40,8 @@ class TiendaSearch extends Tienda
      */
     public function search($params)
     {
-        $query = Tienda::find();
+        $tienda = Tienda::getCurrentTienda();
+        $query = isset($tienda) ? Tienda::find()->where(['id_tienda' => $tienda->id_tienda]) : Tienda::find();        
 
         // add conditions that should always apply here
 
