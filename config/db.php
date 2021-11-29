@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost:3308;dbname=invment_bdgestion',
-    'username' => 'root',
-    'password' => '',
+    'dsn' => 'mysql:host=localhost:3306;dbname=invment_bd',
+    'username' => 'admin',
+    'password' => '161299',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
