@@ -1,6 +1,8 @@
 <?php
 
+use app\models\Producto;
 use yii\helpers\Html;
+use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -12,13 +14,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'id_producto')->widget(Select2::classname(), [
+        'data' => Producto::getProductoMap(),
+        'options' => ['placeholder' => 'Selecciona el producto ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);
+    ?>
     <?= $form->field($model, 'cantidad')->textInput() ?>
-
-    <?= $form->field($model, 'fecha_registro')->textInput() ?>
-
-    <?= $form->field($model, 'id_producto')->textInput() ?>
-
-    <?= $form->field($model, 'id_sucursal')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

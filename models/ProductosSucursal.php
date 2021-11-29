@@ -32,7 +32,7 @@ class ProductosSucursal extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cantidad', 'fecha_registro', 'id_producto', 'id_sucursal'], 'required'],
+            [['cantidad', 'id_producto'], 'required'],
             [['cantidad', 'id_producto', 'id_sucursal'], 'integer'],
             [['fecha_registro'], 'safe'],
             [['id_producto'], 'exist', 'skipOnError' => true, 'targetClass' => Producto::className(), 'targetAttribute' => ['id_producto' => 'id_producto']],
@@ -46,11 +46,14 @@ class ProductosSucursal extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_producto_sucursal' => 'ID producto por sucursal',
+            'id_producto_sucursal' => 'ID en inventario',
             'cantidad' => 'Cantidad',
             'fecha_registro' => 'Fecha de registro',
-            'id_producto' => 'ID del producto',
+            'id_producto' => 'ID Producto',
             'id_sucursal' => 'ID de sucursal',
+            'productoNombre' => 'Producto',
+            'productoPrecio' => 'Precio unitario',
+            'valorMonetario' => 'Valor',
         ];
     }
 
@@ -72,5 +75,18 @@ class ProductosSucursal extends \yii\db\ActiveRecord
     public function getSucursal()
     {
         return $this->hasOne(Sucursal::className(), ['id_sucursal' => 'id_sucursal']);
+    }
+
+    public function getProductoNombre() {
+        
+        return "<a href='/producto/{$this->producto->id_producto}'>{$this->producto->descripcion}</a>" ;
+    }
+
+    public function getProductoPrecio() {
+        return $this->producto->precio_unitario;
+    }
+
+    public function getValorMonetario() {
+        return $this->cantidad * $this->getProductoPrecio();
     }
 }

@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\ProductosSucursal */
 
-$this->title = $model->id_producto_sucursal;
-$this->params['breadcrumbs'][] = ['label' => 'Productos Sucursals', 'url' => ['index']];
+$this->title = $model->producto->descripcion;
+$this->params['breadcrumbs'][] = ['label' => 'Inventario', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id_producto_sucursal' => $model->id_producto_sucursal], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id_producto_sucursal' => $model->id_producto_sucursal], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id_producto_sucursal], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->id_producto_sucursal], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Desea eliminarlo?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,10 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id_producto_sucursal',
-            'cantidad',
-            'fecha_registro',
             'id_producto',
-            'id_sucursal',
+            [
+                'label' => 'Producto',
+                'format' => 'raw',
+                'value' => $model->getProductoNombre()
+            ],
+            'cantidad',
+            'productoPrecio',
+            'valorMonetario',
+            'fecha_registro',
         ],
     ]) ?>
 

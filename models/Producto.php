@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "productos".
@@ -138,5 +139,10 @@ class Producto extends \yii\db\ActiveRecord
 
     public function getUnidadNombre() {
         return $this->unidadMedida->medida;
+    }
+
+    public static function getProductoMap()
+    {
+        return ArrayHelper::map(Producto::find()->all(), 'id_producto', 'descripcion');
     }
 }

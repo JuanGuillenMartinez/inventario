@@ -90,8 +90,17 @@ class Sucursal extends \yii\db\ActiveRecord
         return $this->hasOne(Tienda::className(), ['id_tienda' => 'id_tienda']);
     }
 
+    public static function getCurrentSucursal() {
+        $empleado = DatosEmpleado::find()->where(['id_user' => Yii::$app->user->identity->getId()])->one();
+        return Sucursal::find()->where(['id_sucursal' => $empleado->sucursal->id_sucursal])->one();
+    }
+
+    public function getInfoSucursal() {
+        return $this->tienda->nombre_tienda . " - " . $this->nombre_sucursal;
+    }
+
     public static function getSucursalMap()
     {
-        return ArrayHelper::map(Sucursal::find()->all(), 'id_sucursal', 'nombre_sucursal');
+        return ArrayHelper::map(Sucursal::find()->all(), 'id_sucursal', 'infoSucursal');
     }
 }

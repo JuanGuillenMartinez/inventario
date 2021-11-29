@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\ProductosSucursal;
 use app\models\ProductosSucursalSearch;
+use app\models\Sucursal;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -69,8 +70,21 @@ class ProductosSucursalController extends Controller
         $model = new ProductosSucursal();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id_producto_sucursal]);
+            if ($model->load($this->request->post())) {
+                $productoSucursal = ProductosSucursal::find()->where(['id_producto' => $model->id_producto, 'id_sucursal' => Sucursal::getCurrentSucursal()->id_sucursal])->one();
+                if(isset($productoSucursal)) {
+                    $productoSucursal->fecha_registro = date("Y-m-d H:i:s");
+                    $productoSucursal->cantidad += $model->cantidad;
+                    if($productoSucursal->save()) {
+                        return $this->redirect(['view', 'id' => $productoSucursal->id_producto_sucursal]);
+                    }
+                } else {
+                    $model->fecha_registro = date("Y-m-d H:i:s");
+                    $model->id_sucursal = Sucursal::getCurrentSucursal()->id_sucursal;
+                    if($model->save()) {
+                        return $this->redirect(['view', 'id' => $model->id_producto_sucursal]);
+                    }
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -92,8 +106,11 @@ class ProductosSucursalController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_producto_sucursal]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->fecha_registro = date("Y-m-d H:i:s");
+            if($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id_producto_sucursal]);
+            }
         }
 
         return $this->render('update', [

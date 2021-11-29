@@ -55,4 +55,9 @@ class Tienda extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Sucursal::className(), ['id_tienda' => 'id_tienda']);
     }
+
+    public static function getCurrentTienda() {
+        $empleado = DatosEmpleado::find()->where(['id_user' => Yii::$app->user->identity->getId()])->one();
+        return Tienda::find()->where(['id_tienda' => $empleado->sucursal->tienda->id_tienda])->one();
+    }
 }
