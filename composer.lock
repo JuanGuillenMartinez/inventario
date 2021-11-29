@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3dc6b0be67e50f87b736674190c5af4a",
+    "content-hash": "09a2f4f1beb7d6f93f8d7cf2cd6f65f5",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -452,6 +452,65 @@
                 "source": "https://github.com/kartik-v/yii2-krajee-base/tree/master"
             },
             "time": "2021-11-09T03:06:09+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-widget-datepicker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
+                "reference": "f5f8b396cf03d4a383aad5e7b338f8cb065abf66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/f5f8b396cf03d4a383aad5e7b338f8cb065abf66",
+                "reference": "f5f8b396cf03d4a383aad5e7b338f8cb065abf66",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": ">=2.0.0"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\date\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Enhanced Yii2 wrapper for the bootstrap datepicker plugin (sub repo split from yii2-widgets).",
+            "homepage": "https://github.com/kartik-v/yii2-widget-datepicker",
+            "keywords": [
+                "date",
+                "extension",
+                "form",
+                "jquery",
+                "picker",
+                "plugin",
+                "select2",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/yii2-widget-datepicker/issues",
+                "source": "https://github.com/kartik-v/yii2-widget-datepicker/tree/v1.4.8"
+            },
+            "time": "2021-10-28T03:58:09+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-select2",
@@ -6022,7 +6081,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "webvimark/module-user-management": 20,
-        "kartik-v/yii2-widget-select2": 20
+        "kartik-v/yii2-widget-select2": 20,
+        "kartik-v/yii2-widget-datepicker": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "datos_empleados".
@@ -118,4 +119,5 @@ class DatosEmpleado extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Venta::className(), ['id_empleado' => 'id_datos_empleado']);
     }
+
 }

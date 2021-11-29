@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "sucursales".
@@ -87,5 +88,10 @@ class Sucursal extends \yii\db\ActiveRecord
     public function getTienda()
     {
         return $this->hasOne(Tienda::className(), ['id_tienda' => 'id_tienda']);
+    }
+
+    public static function getSucursalMap()
+    {
+        return ArrayHelper::map(Sucursal::find()->all(), 'id_sucursal', 'nombre_sucursal');
     }
 }

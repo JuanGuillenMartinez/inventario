@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "puestos_laborales".
@@ -55,5 +56,9 @@ class PuestoLaboral extends \yii\db\ActiveRecord
     public function getDatosEmpleados()
     {
         return $this->hasMany(DatosEmpleado::className(), ['id_puesto' => 'id_puesto_laboral']);
+    }
+    public static function getPuestoMap()
+    {
+        return ArrayHelper::map(PuestoLaboral::find()->all(), 'id_puesto_laboral', 'nombre_puesto');
     }
 }
