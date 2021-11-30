@@ -67,6 +67,9 @@ class DatosEmpleado extends \yii\db\ActiveRecord
             'direccion' => 'Dirección',
             'numero_telefonico' => 'Teléfono',
             'nacimiento' => 'Fecha de nacimiento',
+            'nombreCompleto' => 'Nombre completo',
+            'sucursalNombre' => 'Sucursal',
+            'puestoNombre' => 'Puesto'
         ];
     }
 
@@ -121,11 +124,24 @@ class DatosEmpleado extends \yii\db\ActiveRecord
     }
 
     public static function getCurrentEmpleado() {
-        return DatosEmpleado::find()->where(['id_user' => Yii::$app->user->identity->getId()])->one();
+        $user = Yii::$app->user;
+        return isset($user) ? DatosEmpleado::find()->where(['id_user' => $user->id])->one() : null;
     }
 
     public function getIdEmpleado() {
         return DatosEmpleado::getCurrentEmpleado()->id_datos_empleado;
+    }
+
+    public function getNombreCompleto() {
+        return $this->nombre . " " . $this->apellido_paterno . " " . $this->apellido_materno;
+    }
+
+    public function getSucursalNombre() {
+        return $this->sucursal->nombre_sucursal;
+    }
+
+    public function getPuestoNombre() {
+        return $this->puesto->nombre_puesto;
     }
 
 }

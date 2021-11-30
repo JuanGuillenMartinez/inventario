@@ -112,4 +112,12 @@ class Sucursal extends \yii\db\ActiveRecord
     {
         return ArrayHelper::map(Sucursal::find()->all(), 'id_sucursal', 'infoSucursal');
     }
+
+    public static function getSucursalesTiendaMap()
+    {
+        $sucursal = Sucursal::getCurrentSucursal();
+        $tienda = isset($sucursal) ? $sucursal->tienda : null;
+        return isset($tienda) ? ArrayHelper::map(Sucursal::find()->where(['id_tienda' => $tienda->id_tienda])->all(), 'id_sucursal', 'infoSucursal') : null;
+    }
+
 }

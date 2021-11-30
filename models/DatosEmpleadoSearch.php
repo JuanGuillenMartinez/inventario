@@ -40,8 +40,9 @@ class DatosEmpleadoSearch extends DatosEmpleado
      */
     public function search($params)
     {
-        $query = DatosEmpleado::find();
-
+        $sucursal = Sucursal::getCurrentSucursal();
+        $query = isset($sucursal) ? DatosEmpleado::find()->where(['id_sucursal' => $sucursal->id_sucursal]) : DatosEmpleado::find();
+        
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

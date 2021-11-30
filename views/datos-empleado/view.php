@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\DatosEmpleado */
 
-$this->title = $model->id_datos_empleado;
+$this->title = $model->getNombreCompleto();
 $this->params['breadcrumbs'][] = ['label' => 'Datos Empleados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -16,23 +16,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id_datos_empleado' => $model->id_datos_empleado], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id_datos_empleado' => $model->id_datos_empleado], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id_datos_empleado], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id_datos_empleado',
-            'id_user',
-            'id_sucursal',
-            'id_puesto',
+            // 'id_user',
+            // 'id_sucursal',
+            'sucursalNombre',
+            // 'id_puesto',
+            'puestoNombre',
             'nombre',
             'apellido_paterno',
             'apellido_materno',

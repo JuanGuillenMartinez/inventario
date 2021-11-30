@@ -49,6 +49,24 @@ use yii\bootstrap4\Html;
                 </a>
                 <h2 class="nombre-boton">Tiendas</h2>
             </div>
+            <div data-bss-hover-animate="pulse" class="div-boton">
+                <a href="/user-management/auth/registration">
+                    <?php echo Html::img('@web/img/icons/tienda.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
+                </a>
+                <h2 class="nombre-boton">Registrar</h2>
+            </div>
+            <div data-bss-hover-animate="pulse" class="div-boton">
+                <a href="/datos-empleado">
+                    <?php echo Html::img('@web/img/icons/tienda.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
+                </a>
+                <h2 class="nombre-boton">Empleados</h2>
+            </div>
+            <div data-bss-hover-animate="pulse" class="div-boton">
+                <a href="/tienda">
+                    <?php echo Html::img('@web/img/icons/tienda.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
+                </a>
+                <h2 class="nombre-boton">Clientes</h2>
+            </div>
         </div>
     </section>
 </body>
