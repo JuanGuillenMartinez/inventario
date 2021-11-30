@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Cliente */
 
-$this->title = $model->id_cliente;
+$this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Clientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Eliminar', ['delete', 'id' => $model->id_cliente], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '¿Está seguro de que quiere eliminar este artículo?',
+                'confirm' => '¿Está seguro de que desea eliminarlo?',
                 'method' => 'post',
             ],
         ]) ?>
