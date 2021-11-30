@@ -6,7 +6,6 @@ use app\models\DatosEmpleado;
 use app\models\DatosEmpleadoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * DatosEmpleadoController implements the CRUD actions for DatosEmpleado model.
@@ -86,7 +85,7 @@ class DatosEmpleadoController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id_datos_empleado]);
         }
 

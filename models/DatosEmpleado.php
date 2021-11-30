@@ -41,7 +41,7 @@ class DatosEmpleado extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'id_sucursal', 'id_puesto', 'nombre', 'apellido_paterno', 'apellido_materno', 'direccion', 'numero_telefonico', 'nacimiento'], 'required'],
+            [['id_sucursal', 'id_puesto', 'nombre', 'apellido_paterno', 'apellido_materno', 'direccion', 'numero_telefonico', 'nacimiento'], 'required'],
             [['id_user', 'id_sucursal', 'id_puesto'], 'integer'],
             [['nacimiento'], 'safe'],
             [['nombre', 'apellido_paterno', 'apellido_materno', 'direccion', 'numero_telefonico'], 'string', 'max' => 45],

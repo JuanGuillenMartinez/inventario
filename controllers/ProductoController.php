@@ -66,7 +66,7 @@ class ProductoController extends Controller
             if ($model->load($this->request->post())) {
                 $model->fecha_registro = date('Y-m-d');
                 if ($model->save()) {
-                    return $this->redirect(['view', 'id' => $model->id]);
+                    return $this->redirect(['view', 'id' => $model->id_producto]);
                 }
             }
         } else {
@@ -90,7 +90,7 @@ class ProductoController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_producto]);
         }
 
         return $this->render('update', [

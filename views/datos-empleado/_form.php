@@ -16,6 +16,8 @@ use app\models\PuestoLaboral;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'id_user')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'id_sucursal')->widget(Select2::classname(), [
         'data' => Sucursal::getSucursalesTiendaMap(),
         'options' => ['placeholder' => 'Selecciona la sucursal ...'],

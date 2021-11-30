@@ -51,19 +51,19 @@ use yii\bootstrap4\Html;
             </div>
             <div data-bss-hover-animate="pulse" class="div-boton">
                 <a href="/user-management/auth/registration">
-                    <?php echo Html::img('@web/img/icons/tienda.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
+                    <?php echo Html::img('@web/img/icons/registrar.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
                 </a>
-                <h2 class="nombre-boton">Registrar</h2>
+                <h2 class="nombre-boton">Registrar empleado</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="div-boton">
                 <a href="/datos-empleado">
-                    <?php echo Html::img('@web/img/icons/tienda.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
+                    <?php echo Html::img('@web/img/icons/empleado.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
                 </a>
                 <h2 class="nombre-boton">Empleados</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="div-boton">
                 <a href="/tienda">
-                    <?php echo Html::img('@web/img/icons/tienda.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
+                    <?php echo Html::img('@web/img/icons/clientes.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
                 </a>
                 <h2 class="nombre-boton">Clientes</h2>
             </div>
